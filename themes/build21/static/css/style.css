@@ -1,7 +1,7 @@
 a, #sitename { text-decoration: none; }
 
-a:link { color: #5397f5; }
-a:visited { color: #3d70b8; }
+a:link { color: var(--link-color); }
+a:visited { color: var(--link-visited); }
 a:hover { text-decoration: underline; }
 
 @media (prefers-color-scheme: dark) {
@@ -17,8 +17,8 @@ body, div {
 
 body {
     font: 100%/1.5 verdana;
-    color: #222;
-    background-color: #fff;
+    color: var(--text-color);
+    background-color: var(--bg-color);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -63,7 +63,7 @@ pre, code {
 
 pre {
     overflow: auto;
-    background: #f8f8f8;
+    background: var(--pre-bg);
     padding: 1em;
     border-radius: 4px;
 }
@@ -91,10 +91,10 @@ pre {
 }
 
 #top {
-    background: #5397f5;
+    background: var(--top-bg);
     color: #FFF;
     margin: 0 0 .67em;
-    border: 0 solid #7ba7f1;
+    border: 0 solid var(--top-border);
     border-width: 0 0 12px;
     padding: 2em 0 0;
 }
