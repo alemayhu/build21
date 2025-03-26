@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
+from datetime import datetime
 
 AUTHOR = 'Alexander Alemayhu'
 SITENAME = 'Build21'
@@ -8,6 +9,10 @@ SITEURL = ''
 PATH = 'content'
 TIMEZONE = 'Europe/Oslo'
 DEFAULT_LANG = 'en'
+
+# Theme settings
+THEME = 'themes/build21'
+CURRENTYEAR = datetime.now().year
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -26,5 +31,5 @@ SOCIAL = (('GitHub', 'https://github.com/alemayhu'),)
 
 DEFAULT_PAGINATION = 10
 
-# Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+# Use document-relative URLs
+RELATIVE_URLS = True
