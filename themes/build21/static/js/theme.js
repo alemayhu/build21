@@ -2,6 +2,7 @@
 function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
+    updateThemeIcon(theme);
 }
 
 function toggleTheme() {
@@ -9,20 +10,19 @@ function toggleTheme() {
     const themes = ['auto', 'light', 'dark'];
     const nextTheme = themes[(themes.indexOf(currentTheme) + 1) % themes.length];
     setTheme(nextTheme);
-    updateThemeIcon(nextTheme);
 }
 
 function updateThemeIcon(theme) {
     const button = document.getElementById('theme-toggle');
     if (!button) return;
     
-    // Update aria-label based on next theme
+    // Update aria-label based on current theme
     const labels = {
-        'auto': 'Use light theme',
-        'light': 'Use dark theme',
-        'dark': 'Use system theme'
+        'auto': 'Using system theme (click for light)',
+        'light': 'Using light theme (click for dark)',
+        'dark': 'Using dark theme (click for system)'
     };
-    button.setAttribute('aria-label', labels[theme]);
+    button.setAttribute('aria-label', labels[theme] || labels['auto']);
     
     // Update the icon text
     const icons = {
@@ -30,12 +30,15 @@ function updateThemeIcon(theme) {
         'light': '☀️',
         'dark': '🌙'
     };
-    button.textContent = icons[theme];
+    button.textContent = icons[theme] || icons['auto'];
 }
 
 // Initialize theme on page load
-document.addEventListener('DOMContentLoaded', () => {
+function initTheme() {
     const savedTheme = localStorage.getItem('theme') || 'auto';
     setTheme(savedTheme);
-    updateThemeIcon(savedTheme);
-});
+}
+
+// Make sure the theme is initialized both on load and when the script runs
+initTheme();
+document.addEventListener('DOMContentLoaded', initTheme);
