@@ -1,31 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="articles">
-    {% for article in articles_page.object_list %}
-    <article>
-        <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
-        <div class="article-meta">
-            <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
-            {% if article.category %}
-            in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-            {% endif %}
-        </div>
-        <div class="summary">
-            {{ article.summary }}
-        </div>
-    </article>
-    {% endfor %}
+{% for article in articles_page.object_list %}
+<h1><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h1>
+{{ article.summary }}
 
-    {% if articles_page.has_other_pages() %}
-    <div class="pagination">
-        {% if articles_page.has_previous() %}
-        <a href="{{ SITEURL }}/{{ articles_previous_page.url }}">&laquo; Previous</a>
-        {% endif %}
-        {% if articles_page.has_next() %}
-        <a href="{{ SITEURL }}/{{ articles_next_page.url }}">Next &raquo;</a>
-        {% endif %}
-    </div>
+<p class="s">
+    <a href="{{ SITEURL }}/{{ article.url }}" id="perm">permalink</a>
+    <i>{{ article.locale_date }}</i>
+</p>
+{% endfor %}
+
+{% if articles_page.has_other_pages() %}
+<div class="pagination s">
+    {% if articles_page.has_previous() %}
+    <a href="{{ SITEURL }}/{{ articles_previous_page.url }}">&laquo; Previous</a>
     {% endif %}
-</section>
+    {% if articles_page.has_next() %}
+    <a href="{{ SITEURL }}/{{ articles_next_page.url }}">Next &raquo;</a>
+    {% endif %}
+</div>
+{% endif %}
 {% endblock content %}

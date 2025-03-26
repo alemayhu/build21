@@ -1,41 +1,39 @@
 <!DOCTYPE html>
 <html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock html_lang %}">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
     <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" />
+    <link rel="alternate" type="application/atom+xml" title="Atom feed" href="{{ SITEURL }}/feeds/all.atom.xml">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
-            {% if LINKS %}
-            <nav>
-                {% for name, link in LINKS %}
-                <a href="{{ link }}">{{ name }}</a>
-                {% endfor %}
-            </nav>
-            {% endif %}
+    <div id="top">
+        <div class="box">
+            <a id="sitename" href="{{ SITEURL }}/">{{ SITENAME }}</a>
+            <p>A blog about software development, technology, and creative ideas.</p>
         </div>
-    </header>
-
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-
-    <footer>
-        <div class="footer-content">
+    </div>
+    
+    <div class="box">
+        <div id="c1">
+            {% block content %}
+            {% endblock %}
+        </div>
+        
+        <div id="c2">
+            <h1><a href="{{ SITEURL }}/archives.html">archives</a></h1>
             {% if SOCIAL %}
-            <div class="social">
+            <p>
                 {% for name, link in SOCIAL %}
-                <a href="{{ link }}">{{ name }}</a>
+                <b><a href="{{ link }}">{{ name }}</a></b>{% if not loop.last %} / {% endif %}
                 {% endfor %}
-            </div>
+            </p>
             {% endif %}
-            <p>&copy; {{ AUTHOR }} {{ CURRENTYEAR }}</p>
+            <div class="s">
+                <p>{{ AUTHOR }}'s blog about software development, technology, and creative ideas.</p>
+            </div>
         </div>
-    </footer>
+    </div>
 </body>
 </html>

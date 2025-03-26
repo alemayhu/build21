@@ -3,25 +3,19 @@
 {% block title %}{{ article.title }} - {{ SITENAME }}{% endblock %}
 
 {% block content %}
-<article>
-    <header>
-        <h1>{{ article.title }}</h1>
-        <div class="article-meta">
-            <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
-            {% if article.category %}
-            in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-            {% endif %}
-            {% if article.tags %}
-            | Tags:
-            {% for tag in article.tags %}
-            <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
-            {% endfor %}
-            {% endif %}
-        </div>
-    </header>
+<h1>{{ article.title }}</h1>
 
-    <div class="article-content">
-        {{ article.content }}
-    </div>
-</article>
+{{ article.content }}
+
+<p class="s">
+    <a href="{{ SITEURL }}/{{ article.url }}" id="perm">permalink</a>
+    <i>{{ article.locale_date }}</i>
+</p>
+
+<h1>previously</h1>
+<ul>
+{% for article in articles[1:6] %}
+    <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+{% endfor %}
+</ul>
 {% endblock %}
