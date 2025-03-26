@@ -9,7 +9,7 @@
     <meta name="description" content="{{ SITEDESC|default('The purpose of computing is insight, not numbers.') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="{{ AUTHOR }}">
-    <meta name="theme-color" content="#5397f5">
+    <meta name="theme-color" content="#2D9CDB">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -32,6 +32,10 @@
     <!-- Feeds -->
     <link rel="alternate" type="application/atom+xml" title="Atom feed" href="{{ SITEURL }}/feeds/all.atom.xml">
     
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <!-- Styles -->
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/theme.css">
@@ -40,30 +44,36 @@
     <script src="{{ SITEURL }}/theme/js/theme.js"></script>
 </head>
 <body>
-    <div id="top">
+    <header id="top">
         <div class="box">
             <a id="sitename" href="{{ SITEURL }}/">{{ SITENAME|replace('\n', '<br>')|safe }}</a>
-            <p>The purpose of computing is insight, not numbers.</p>
+            <p class="site-description">The purpose of computing is insight, not numbers.</p>
         </div>
-    </div>
+    </header>
     
-    <div class="box">
-        <div id="c1">
+    <main class="box">
+        <div id="c1" class="content-main">
             {% block content %}
             {% endblock %}
         </div>
         
-        <div id="c2">
-            <h1><a href="{{ SITEURL }}/archives.html">archives</a></h1>
-            {% if SOCIAL %}
-            <p>
-                {% for name, link in SOCIAL %}
-                <b><a href="{{ link }}">{{ name }}</a></b>{% if not loop.last %} / {% endif %}
-                {% endfor %}
-            </p>
-            {% endif %}
-            <div class="s">
-                <p>{{ AUTHOR }}'s blog about software development, technology, and creative ideas.</p>
+        <div id="c2" class="sidebar">
+            <div class="sidebar-section">
+                <h2><a href="{{ SITEURL }}/archives.html">archives</a></h2>
+                
+                {% if SOCIAL %}
+                <p class="contact-links">
+                    {% for name, link in SOCIAL %}
+                    <a href="{{ link }}">{{ name }}</a>{% if not loop.last %} / {% endif %}
+                    {% endfor %}
+                    / <a href="mailto:alexander@alemayhu.com">mail</a>
+                </p>
+                {% endif %}
+                
+                <p class="about-text">
+                    I'm {{ AUTHOR }}, a software developer writing about software development, technology, and creative ideas.
+                </p>
+                
                 <div class="theme-selector">
                     <h3>Appearance</h3>
                     <select id="theme-select" aria-label="Select theme" onchange="setTheme(this.value)">
@@ -74,6 +84,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+    
+
 </body>
 </html>

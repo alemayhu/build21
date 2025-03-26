@@ -14,51 +14,99 @@
     opacity: 1;
 }
 
-/* Default theme variables */
+/* Notion-inspired theme variables with colored headers */
 :root {
     color-scheme: light dark; /* Enable system color scheme support */
     
-    /* Light theme by default */
-    --text-color: #222;
-    --bg-color: #fff;
-    --link-color: #5397f5;
-    --link-visited: #3d70b8;
-    --pre-bg: #f8f8f8;
+    /* Light theme by default (Notion-style with colored headers) */
+    --text-color: #000000;
+    --text-secondary: #37352f;
+    --bg-color: #ffffff;
+    --link-color: #2D9CDB;
+    --link-hover: #1A82A8;
+    --link-visited: #2D9CDB;
+    --pre-bg: #F7F7F7;
+    --border-color: #E0E0E0;
     --top-bg: #5397f5;
+    --top-text: #ffffff;
     --top-border: #7ba7f1;
+    --card-bg: #ffffff;
+    --button-bg: #F7F7F7;
+    --button-text: #000000;
+    --button-hover-bg: #E0E0E0;
+    --button-hover-border: #D0D0D0;
+    --hover-bg: #F7F7F7;
+    --input-bg: #F7F7F7;
+    --heading-color: #5397f5;
 }
 
-/* Light theme */
+/* Light theme (Notion-style with colored headers) */
 :root[data-theme='light'] {
-    --text-color: #222;
-    --bg-color: #fff;
-    --link-color: #5397f5;
-    --link-visited: #3d70b8;
-    --pre-bg: #f8f8f8;
+    --text-color: #000000;
+    --text-secondary: #37352f;
+    --bg-color: #ffffff;
+    --link-color: #2D9CDB;
+    --link-hover: #1A82A8;
+    --link-visited: #2D9CDB;
+    --pre-bg: #F7F7F7;
+    --border-color: #E0E0E0;
     --top-bg: #5397f5;
+    --top-text: #ffffff;
     --top-border: #7ba7f1;
+    --card-bg: #ffffff;
+    --button-bg: #F7F7F7;
+    --button-text: #000000;
+    --button-hover-bg: #E0E0E0;
+    --button-hover-border: #D0D0D0;
+    --hover-bg: #F7F7F7;
+    --input-bg: #F7F7F7;
+    --heading-color: #5397f5;
 }
 
-/* Dark theme */
+/* Dark theme (Notion-style with colored headers) */
 :root[data-theme='dark'] {
-    --text-color: #e4e4e4;
-    --bg-color: #1a1a1a;
-    --link-color: #7bb0f7;
-    --link-visited: #5d90d8;
-    --pre-bg: #2a2a2a;
+    --text-color: #ffffff;
+    --text-secondary: #999999;
+    --bg-color: #191919;
+    --link-color: #529CCA;
+    --link-hover: #7DB9E0;
+    --link-visited: #529CCA;
+    --pre-bg: #2A2A2A;
+    --border-color: #333333;
     --top-bg: #2a5ba8;
+    --top-text: #ffffff;
     --top-border: #4d7bc4;
+    --card-bg: #222222;
+    --button-bg: #333333;
+    --button-text: #ffffff;
+    --button-hover-bg: #444444;
+    --button-hover-border: #555555;
+    --hover-bg: #2A2A2A;
+    --input-bg: #2A2A2A;
+    --heading-color: #7bb0f7;
 }
 
 /* Auto theme based on system preference */
 :root:not([data-theme='light']):not([data-theme='dark']) {
-    --text-color: #222;
-    --bg-color: #fff;
-    --link-color: #5397f5;
-    --link-visited: #3d70b8;
-    --pre-bg: #f8f8f8;
+    --text-color: #000000;
+    --text-secondary: #37352f;
+    --bg-color: #ffffff;
+    --link-color: #2D9CDB;
+    --link-hover: #1A82A8;
+    --link-visited: #2D9CDB;
+    --pre-bg: #F7F7F7;
+    --border-color: #E0E0E0;
     --top-bg: #5397f5;
+    --top-text: #ffffff;
     --top-border: #7ba7f1;
+    --card-bg: #ffffff;
+    --button-bg: #F7F7F7;
+    --button-text: #000000;
+    --button-hover-bg: #E0E0E0;
+    --button-hover-border: #D0D0D0;
+    --hover-bg: #F7F7F7;
+    --input-bg: #F7F7F7;
+    --heading-color: #5397f5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -80,36 +128,47 @@
                 border-color 0.3s ease;
 }
 
-/* Theme selector styles */
+/* Theme selector styles (Notion-style) */
 .theme-selector {
     margin-top: 2em;
 }
 
 .theme-selector h3 {
-    font-size: 1em;
-    margin-bottom: 0.5em;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75em;
     color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 #theme-select {
     width: 100%;
-    padding: 0.5em;
-    font-size: 0.9em;
-    border: 1px solid var(--top-border);
+    padding: 0.75em 1em;
+    font-size: 0.875rem;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    background-color: var(--bg-color);
+    background-color: var(--input-bg);
     color: var(--text-color);
     cursor: pointer;
     outline: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6"><path d="M0 0l6 6 6-6z" fill="%23333"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 1em center;
+    padding-right: 2.5em;
 }
 
 #theme-select:hover {
     border-color: var(--link-color);
+    background-color: var(--hover-bg);
 }
 
 #theme-select:focus {
     border-color: var(--link-color);
-    box-shadow: 0 0 0 2px var(--top-border);
+    box-shadow: 0 0 0 2px rgba(45, 156, 219, 0.2);
 }
 
 @media (prefers-color-scheme: dark) {
