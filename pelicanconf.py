@@ -4,6 +4,7 @@ from datetime import datetime
 
 AUTHOR = 'Alexander Alemayhu'
 SITENAME = 'building in the\ntwenty-first century'
+SITEDESC = 'A blog about software development, technology, and creative insights in the twenty-first century.'
 SITEURL = ''
 
 PATH = 'content'
