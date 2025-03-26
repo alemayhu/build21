@@ -3,7 +3,7 @@
 from datetime import datetime
 
 AUTHOR = 'Alexander Alemayhu'
-SITENAME = 'Build21'
+SITENAME = 'building in the\ntwenty-first century'
 SITEURL = ''
 
 PATH = 'content'

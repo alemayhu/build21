@@ -10,7 +10,7 @@
 <body>
     <div id="top">
         <div class="box">
-            <a id="sitename" href="{{ SITEURL }}/">{{ SITENAME }}</a>
+            <a id="sitename" href="{{ SITEURL }}/">{{ SITENAME|replace('\n', '<br>')|safe }}</a>
             <p>A blog about software development, technology, and creative ideas.</p>
         </div>
     </div>
