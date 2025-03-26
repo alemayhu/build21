@@ -4,6 +4,11 @@ a:link { color: #5397f5; }
 a:visited { color: #3d70b8; }
 a:hover { text-decoration: underline; }
 
+@media (prefers-color-scheme: dark) {
+    a:link { color: #7bb0f7; }
+    a:visited { color: #5d90d8; }
+}
+
 body, div {
     margin: 0;
     padding: 0;
@@ -13,6 +18,14 @@ body, div {
 body {
     font: 100%/1.5 verdana;
     color: #222;
+    background-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #e4e4e4;
+        background-color: #1a1a1a;
+    }
 }
 
 p, ul, blockquote, pre {
@@ -30,6 +43,12 @@ h1, h2 {
     margin: 0 0 .5em;
 }
 
+@media (prefers-color-scheme: dark) {
+    h1, h2 {
+        color: #e4e4e4;
+    }
+}
+
 h1 {
     color: #5397f5;
 }
@@ -44,6 +63,15 @@ pre, code {
 
 pre {
     overflow: auto;
+    background: #f8f8f8;
+    padding: 1em;
+    border-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+    pre {
+        background: #2a2a2a;
+    }
 }
 
 .box {
@@ -71,6 +99,13 @@ pre {
     padding: 2em 0 0;
 }
 
+@media (prefers-color-scheme: dark) {
+    #top {
+        background: #2a5ba8;
+        border-color: #4d7bc4;
+    }
+}
+
 #sitename {
     font: 700 2.5em georgia;
     color: #FFF;
@@ -81,6 +116,14 @@ pre {
     background: #DDD;
     border: 1px solid #BBB;
     padding: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+    #perm {
+        color: #e4e4e4;
+        background: #2a2a2a;
+        border-color: #444;
+    }
 }
 
 @media screen and (min-width: 768px) {
