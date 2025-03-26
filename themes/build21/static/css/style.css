@@ -4,10 +4,7 @@ a:link { color: var(--link-color); }
 a:visited { color: var(--link-visited); }
 a:hover { text-decoration: underline; }
 
-@media (prefers-color-scheme: dark) {
-    a:link { color: #7bb0f7; }
-    a:visited { color: #5d90d8; }
-}
+
 
 body, div {
     margin: 0;
@@ -21,12 +18,7 @@ body {
     background-color: var(--bg-color);
 }
 
-@media (prefers-color-scheme: dark) {
-    body {
-        color: #e4e4e4;
-        background-color: #1a1a1a;
-    }
-}
+
 
 p, ul, blockquote, pre {
     margin: 0 0 1em;
@@ -41,16 +33,13 @@ ul {
 h1, h2 {
     font: 700 1.27em verdana;
     margin: 0 0 .5em;
+    color: var(--text-color);
 }
 
-@media (prefers-color-scheme: dark) {
-    h1, h2 {
-        color: #e4e4e4;
-    }
-}
+
 
 h1 {
-    color: #5397f5;
+    color: var(--link-color);
 }
 
 blockquote {
@@ -68,11 +57,7 @@ pre {
     border-radius: 4px;
 }
 
-@media (prefers-color-scheme: dark) {
-    pre {
-        background: #2a2a2a;
-    }
-}
+
 
 .box {
     margin: 0 auto;
@@ -99,12 +84,7 @@ pre {
     padding: 2em 0 0;
 }
 
-@media (prefers-color-scheme: dark) {
-    #top {
-        background: #2a5ba8;
-        border-color: #4d7bc4;
-    }
-}
+
 
 #sitename {
     font: 700 2.5em georgia;
@@ -112,19 +92,14 @@ pre {
 }
 
 #perm {
-    color: #222;
-    background: #DDD;
-    border: 1px solid #BBB;
+    color: var(--text-color);
+    background: var(--pre-bg);
+    border: 1px solid var(--top-border);
     padding: 2px;
+    transition: color 0.3s, background-color 0.3s, border-color 0.3s;
 }
 
-@media (prefers-color-scheme: dark) {
-    #perm {
-        color: #e4e4e4;
-        background: #2a2a2a;
-        border-color: #444;
-    }
-}
+
 
 @media screen and (min-width: 768px) {
     blockquote, pre {

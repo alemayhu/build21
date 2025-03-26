@@ -64,7 +64,14 @@
             {% endif %}
             <div class="s">
                 <p>{{ AUTHOR }}'s blog about software development, technology, and creative ideas.</p>
-                <button id="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">⚙️</button>
+                <div class="theme-selector">
+                    <h3>Appearance</h3>
+                    <select id="theme-select" aria-label="Select theme" onchange="setTheme(this.value)">
+                        <option value="auto">System theme</option>
+                        <option value="light">Light theme</option>
+                        <option value="dark">Dark theme</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>

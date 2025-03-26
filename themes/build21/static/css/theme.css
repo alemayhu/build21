@@ -14,7 +14,21 @@
     opacity: 1;
 }
 
-/* Theme colors */
+/* Default theme variables */
+:root {
+    color-scheme: light dark; /* Enable system color scheme support */
+    
+    /* Light theme by default */
+    --text-color: #222;
+    --bg-color: #fff;
+    --link-color: #5397f5;
+    --link-visited: #3d70b8;
+    --pre-bg: #f8f8f8;
+    --top-bg: #5397f5;
+    --top-border: #7ba7f1;
+}
+
+/* Light theme */
 :root[data-theme='light'] {
     --text-color: #222;
     --bg-color: #fff;
@@ -25,6 +39,7 @@
     --top-border: #7ba7f1;
 }
 
+/* Dark theme */
 :root[data-theme='dark'] {
     --text-color: #e4e4e4;
     --bg-color: #1a1a1a;
@@ -44,6 +59,57 @@
     --pre-bg: #f8f8f8;
     --top-bg: #5397f5;
     --top-border: #7ba7f1;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']):not([data-theme='dark']) {
+        --text-color: #e4e4e4;
+        --bg-color: #1a1a1a;
+        --link-color: #7bb0f7;
+        --link-visited: #5d90d8;
+        --pre-bg: #2a2a2a;
+        --top-bg: #2a5ba8;
+        --top-border: #4d7bc4;
+    }
+}
+
+/* Global transitions */
+* {
+    transition: color 0.3s ease,
+                background-color 0.3s ease,
+                border-color 0.3s ease;
+}
+
+/* Theme selector styles */
+.theme-selector {
+    margin-top: 2em;
+}
+
+.theme-selector h3 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    color: var(--text-color);
+}
+
+#theme-select {
+    width: 100%;
+    padding: 0.5em;
+    font-size: 0.9em;
+    border: 1px solid var(--top-border);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+    outline: none;
+}
+
+#theme-select:hover {
+    border-color: var(--link-color);
+}
+
+#theme-select:focus {
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 2px var(--top-border);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,0 +1,90 @@
+version: 1
+
+rules:
+  # Automatically rebuild and serve when files change
+  - name: "Auto Rebuild on Changes"
+    watch:
+      - "content/**/*"
+      - "themes/**/*"
+      - "plugins/**/*"
+      - "pelicanconf.py"
+      - "publishconf.py"
+    run:
+      - "make clean"
+      - "make html"
+      - "make serve PORT=8080"
+
+  # Auto-commit changes with conventional commits format
+  - name: "Auto Commit Theme Changes"
+    watch:
+      - "themes/**/*.css"
+    run:
+      - git add {changed_files}
+      - git commit -m "style(theme): update theme colors and layout
+
+        Files changed:
+        {changed_files}"
+
+  - name: "Auto Commit Theme JS Changes"
+    watch:
+      - "themes/**/*.js"
+    run:
+      - git add {changed_files}
+      - git commit -m "feat(theme): update theme functionality
+
+        Files changed:
+        {changed_files}"
+
+  - name: "Auto Commit Theme Template Changes"
+    watch:
+      - "themes/**/*.html"
+    run:
+      - git add {changed_files}
+      - git commit -m "feat(theme): update theme templates
+
+        Files changed:
+        {changed_files}"
+
+  # Auto-commit content changes
+  - name: "Auto Commit Content Changes"
+    watch:
+      - "content/**/*.md"
+    run:
+      - git add {changed_files}
+      - git commit -m "content(blog): update blog posts
+
+        Files changed:
+        {changed_files}"
+
+  # Auto-deploy on main branch changes
+  - name: "Auto Deploy"
+    watch:
+      - ".git/refs/heads/main"
+    run:
+      - "git push origin main"
+
+settings:
+  # Don't run multiple instances of the same command
+  deduplicate: true
+  
+  # Wait for file changes to settle before triggering rules
+  debounce: 1000
+
+  # Use conventional commits format
+  commit_types:
+    - "feat"     # New features
+    - "fix"      # Bug fixes
+    - "docs"     # Documentation only changes
+    - "style"    # Changes that do not affect the meaning of the code
+    - "refactor" # Code change that neither fixes a bug nor adds a feature
+    - "test"     # Adding missing tests or correcting existing tests
+    - "chore"    # Changes to the build process or auxiliary tools
+    - "content"  # Content updates
+
+  # Commands that are safe to run without confirmation
+  safe_commands:
+    - "make clean"
+    - "make html"
+    - "make serve"
+    - "git status"
+    - "git add"
