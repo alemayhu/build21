@@ -7,6 +7,10 @@ SITENAME = 'building in the\ntwenty-first century'
 SITEDESC = 'A blog about software development, technology, and creative insights in the twenty-first century.'
 SITEURL = ''
 
+# Plugin configuration
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ['contribution_graph']
+
 PATH = 'content'
 TIMEZONE = 'Europe/Oslo'
 DEFAULT_LANG = 'en'
